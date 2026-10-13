@@ -7,8 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Image x:Name="BoardImage"
-       Stretch="Uniform"
-       RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+        <ScrollViewer x:Name="BoardScrollViewer"
+              HorizontalScrollBarVisibility="Hidden"
+              VerticalScrollBarVisibility="Hidden"
+              CanContentScroll="False"
+              Background="Transparent"
+              SizeChanged="BoardScrollViewer_SizeChanged"
+              PreviewMouseWheel="BoardScrollViewer_PreviewMouseWheel"
+              PreviewMouseLeftButtonDown="BoardScrollViewer_MouseLeftButtonDown"
+              PreviewMouseLeftButtonUp="BoardScrollViewer_MouseLeftButtonUp"
+              PreviewMouseMove="BoardScrollViewer_MouseMove"
+              LostMouseCapture="BoardScrollViewer_LostMouseCapture">
+
+            <Grid x:Name="BoardContainer">
+                <Image x:Name="BoardImage"
+               Stretch="None"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               RenderOptions.BitmapScalingMode="NearestNeighbor"
+               RenderTransformOrigin="0,0">
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="BoardScale"
+                                ScaleX="1"
+                                ScaleY="1"/>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>

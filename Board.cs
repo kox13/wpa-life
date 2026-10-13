@@ -11,11 +11,24 @@
             this.Width = width;
             this.Height = height;
             this.cells = new Cell[width, height];
+
+            RandomizeCells(); // TODO: accept entity count
+        }
+
+        public Cell GetCell(int x, int y)
+        {
+            return cells[x, y];
+        }
+
+        public void SetCell(int x, int y, Cell cell) => cells[x, y] = cell;
+
+        private void RandomizeCells()
+        {
             Random rnd = new Random();
 
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < this.Height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < this.Width; x++)
                 {
                     Cell cell = new Cell();
                     int z = rnd.Next(1, 4);
@@ -34,8 +47,5 @@
                 }
             }
         }
-
-        public Cell GetCell(int x, int y) => cells[x, y];
-        public void SetCell(int x, int y, Cell cell) => cells[x, y] = cell;
     }
 }
